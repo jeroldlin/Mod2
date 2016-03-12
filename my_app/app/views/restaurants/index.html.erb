@@ -31,3 +31,25 @@
 <br>
 
 <%= link_to 'New Restaurant', new_restaurant_path %>
+
+<%
+  @allRestAddress = ""
+
+  @restaurants.each do |restaurant|
+    @allRestAddress = @allRestAddress + restaurant.address + "%7C"
+  end
+
+  @allRestAddress = @allRestAddress.gsub(/\s+/, "+")
+%>
+
+<p>
+  <img src="https://maps.googleapis.com/maps/api/staticmap?center=
+
+   <%= %>
+
+   &size=400x400&markers=color:blue%7C
+
+   <%=@allRestAddress%>
+
+   &key=" / >
+</p>
