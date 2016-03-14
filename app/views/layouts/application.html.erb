@@ -7,8 +7,48 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+	<% if alert %><div class="alert alert-warning"><%= alert %></div><<% end %>
+<div id="Navbar">
+	<nav class="navbar navbar-inverse navbar-static-top" id="Nav">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" id="menuButton">
+			Menu                        
+		  </button>
+		  <a class="navbar-brand" href="#" style="color:white">Jerry's Restaurant Directory</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+		  <ul class="nav navbar-nav navbar-left">
+			<li class="active"><a href="#" id="NavLink">Find restaurant</a></li>
+			<li class="active"><a href="#" id="NavLink">Reservations</a></li>
+			<li class="active"><a href="#" id="NavLink">Owner protal</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+		  	<li><a href="#" id="NavLink">Login</a></li>
+			<li><a href="#" id="NavLink">Sign up</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+</div>
 
+<div class="center" id="welcome">
 <%= yield %>
+</div>
 
 </body>
+<footer>
+	<div id="leftFooter">
+			<a href="#" id="leftFooterText" style="color:white" onclick="footerUp();">about</a> 
+	</div>
+	<div id="rightFooter">
+    	<span id="rightFooterText">
+			Copyright &copy; by 2015 Jerry Lin
+        </span>
+	</div>
+	<div id="about">
+		This is the about information.
+	</div>
+</footer>
 </html>
