@@ -5,11 +5,13 @@ class RestaurantsController < ApplicationController
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
+    show_map_all
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    show_map
   end
 
   # GET /restaurants/new
@@ -59,6 +61,19 @@ class RestaurantsController < ApplicationController
       format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def show_map
+    @map_url_string = "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=400x400&markers=color:blue%7C" + @restaurant.address.gsub(/\s+/, "+") + "&key="
+  end
+
+  def show_map_all
+    @allRestAddress = ""
+    @restaurants.each do |restaurant|
+      @allRestAddress += restaurant.address + "%7C"
+    end
+    @allRestAddress = @allRestAddress.gsub(/\s+/, "+")
+    @map_url_string = "https://maps.googleapis.com/maps/api/staticmap?size=400x400&markers=color:blue%7C" + @allRestAddress + "&key="
   end
 
   private

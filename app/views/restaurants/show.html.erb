@@ -21,7 +21,7 @@
 </p>
 
 <p>
-<%= '<img src="https://maps.googleapis.com/maps/api/staticmap?center='.html_safe + @restaurant.address.gsub(/\s+/, "+") + '&zoom=13&size=400x400&markers=color:blue%7C'.html_safe + @restaurant.address.gsub(/\s+/, "+") + '&key=" / >'.html_safe %>
+  <%= image_tag(@map_url_string, alt: "Google Map") %>
 </p>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
