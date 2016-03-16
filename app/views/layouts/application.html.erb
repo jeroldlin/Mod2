@@ -7,8 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
-	<% if alert %><div class="alert alert-warning"><%= alert %></div><<% end %>
 <div id="Navbar">
 	<nav class="navbar navbar-inverse navbar-static-top" id="Nav">
 	  <div class="container-fluid">
@@ -16,7 +14,7 @@
 		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" id="menuButton">
 			Menu                        
 		  </button>
-		  <a class="navbar-brand" href="#" style="color:white">Jerry's Restaurant Directory</a>
+		  <%= link_to "Jerry's Restaurant Directory", restaurants_path, :id => "NavLink", :class => "navbar-brand", :style => "color:white"%>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 		  <ul class="nav navbar-nav navbar-left">
@@ -25,8 +23,13 @@
 			<li class="active"><a href="#" id="NavLink">Owner protal</a></li>
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
-		  	<li><a href="#" id="NavLink">Login</a></li>
-			<li><a href="#" id="NavLink">Sign up</a></li>
+		  <% if user_signed_in? %>
+		    <li class="active"><%= link_to current_user.email, edit_user_registration_path, :id => "NavLink" %></li>
+		  	<li class="active"><%= link_to "Logout", destroy_user_session_path, method: :delete, :id => "NavLink" %></li>
+		  <% else %>
+		  	<li class="active"><%= link_to "Login", new_user_session_path, :id => "NavLink" %></li>
+			<li class="active"><%= link_to "Sign Up", new_user_registration_path, :id => "NavLink" %></li>
+		  <% end %>	
 		  </ul>
 		</div>
 	  </div>
@@ -34,7 +37,9 @@
 </div>
 
 <div class="center" id="welcome">
-<%= yield %>
+	<% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+	<% if alert %><div class="alert alert-warning"><%= alert %></div><<% end %>
+	<%= yield %>
 </div>
 
 </body>
