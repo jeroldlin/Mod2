@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :RestaurantOwners
   has_many :Restaurants, through: :RestaurantOwners
+  # validates :first_name, presentence: true
+
 end
