@@ -12,6 +12,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1.json
   def show
     show_map
+    @name = current_user.name
   end
 
   # GET /restaurants/new

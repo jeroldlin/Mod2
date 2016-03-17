@@ -74,6 +74,14 @@ footer {	position:			fixed;
 										
 #NavLink:hover {	background-color:	black;}
 
+#indexList {	width: 		100%;
+				padding: 	5px;}
+
+#indexList td {	border: 	1px solid black;
+				padding: 	5px;}
+
+#indexList th {	padding: 	5px;}
+
 					
 .center {	overflow:			auto;
 			margin:				5px;
@@ -92,4 +100,7 @@ footer {	position:			fixed;
 .sandboxHeader {	text-decoration:	underline;
 					font-weight:		heavy;
 					font-size:			120%;}
+
 .sandboxRow {		margin: px}
+
+.indexListButton { text-align: center; }
