@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :RestaurantOwners
-  has_many :Restaurants, through: :RestaurantOwners
-  # validates :first_name, presentence: true
-
+  has_many :restaurants_users
+  has_many :restaurants, through: :restaurants_users
+  validates :email, :uniqueness => true, :email_format => true
 end
