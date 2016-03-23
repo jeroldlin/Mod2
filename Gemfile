@@ -49,5 +49,10 @@ group :development do
   gem 'spring'
 
   gem 'jquery-turbolinks'
+
+  group :test, :development do
+  	gem "rspec-rails"
+  end
+
 end
 

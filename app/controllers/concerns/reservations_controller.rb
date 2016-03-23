@@ -1,25 +1,22 @@
-class RestaurantsController < ApplicationController
+class ReservationsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
-    show_map_all
+    @reservations = Reservasion.all
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
     show_map
-    @reservations = Reservation.all
-    @newReservation = Reservation.new
-    @name = @restaurant.users.first.name
+    @name = current_user.name
   end
 
   # GET /restaurants/new
   def new
-    @restaurant = Restaurant.new
+    @Reservaion = Reservasion.new
   end
 
   # GET /restaurants/1/edit
@@ -29,9 +26,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   # POST /restaurants.json
   def create
-    @restaurant = Restaurant.new(restaurant_params)
-
-    current_user.restaurants << @restaurant
+    @restaurant = current_user.restaurants.new(restaurant_params)
 
     respond_to do |format|
       if @restaurant.save
