@@ -14,8 +14,8 @@ class RestaurantsController < ApplicationController
   def show
     show_map
     @reservations = Reservation.all
-    @newReservation = Reservation.new
-    @name = @restaurant.users.first.name
+    @reservation = Reservation.new
+    @users = @restaurant.users
   end
 
   # GET /restaurants/new

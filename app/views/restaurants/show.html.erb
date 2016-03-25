@@ -21,13 +21,17 @@
 </p>
 
 <p>
-  <strong>Owner:</strong>
-  <%= @name %>
+  <strong>Owner(s):</strong>
+  <%- @users.each do |u| %>
+  <%=   u.name %>
+  <% end %>
 </p>
 
 <p>
-  <%= render "reservations/reservations" %>
+  <%=render "reservations/reservations" %>
 </p>
+
+<hr />
 
 <p>
   <%= image_tag(@map_url_string, alt: "Google Map") %>

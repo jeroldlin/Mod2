@@ -12,7 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-1.10.2
+//= require jquery-ui
 //= require turbolinks
-//= require_tree .
+//= require jquery.timepicker
 //= require bootstrap.min
 //= require WebDesign
+//= require TimeCalculator
+//= require_tree

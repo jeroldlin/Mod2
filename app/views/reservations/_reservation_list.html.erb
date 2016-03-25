@@ -1,3 +1,5 @@
+<hr />
+<h2>Current Reservation</h2>
 <table id="indexList">
 	<thead>
 		<tr>
@@ -16,7 +18,7 @@
 			    <td><%= reservation.requested_date_time %></td>
 			    <td><%= reservation.message %></td>
 			    <td><%= reservation.restaurant_association %></td>
-			    <td class="indexListButton"><%= link_to 'Cancel Reservation', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			    <td class="indexListButton"><%= link_to 'Cancel Reservation', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			</tr>
 		<% end %>
 	</tbody>
