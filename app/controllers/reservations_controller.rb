@@ -7,8 +7,6 @@ class ReservationsController < ApplicationController
   def create
   @reservation = Reservation.new(reservation_params)
 
-  binding.pry
-
   respond_to do |format|
       if @reservation.save
         format.html { redirect_to restaurant_path(@reservation.restaurant_id), notice: 'Reservation was successfully created.' }
