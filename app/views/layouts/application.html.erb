@@ -20,7 +20,9 @@
 		  <ul class="nav navbar-nav navbar-left">
 			<li class="active"><a href="#" id="NavLink">Find restaurant</a></li>
 			<li class="active"><a href="#" id="NavLink">Reservations</a></li>
-			<li class="active"><a href="#" id="NavLink">Owner protal</a></li>
+		  <% if user_signed_in? %>
+			<li class="active"><%= link_to "Owner protal", user_path(current_user), :id => "NavLink" %></a></li>
+		  <% end %>	
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
 		  <% if user_signed_in? %>

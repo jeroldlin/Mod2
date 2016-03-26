@@ -18,6 +18,10 @@ class RestaurantsController < ApplicationController
     @users = @restaurant.users
   end
 
+  def owner_portal
+    @reservations = Reservation.all
+  end
+
   # GET /restaurants/new
   def new
     @restaurant = Restaurant.new
