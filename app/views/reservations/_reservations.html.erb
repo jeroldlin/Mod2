@@ -1,0 +1,9 @@
+<div>
+	<%if @restaurant.reservations.first %>
+	<%=render "reservations/reservation_list" %>
+	<%end%>
+</div>
+
+<div>
+	<%=render "reservations/reservation_form" %>
+</div>

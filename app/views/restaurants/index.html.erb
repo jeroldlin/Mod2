@@ -1,12 +1,13 @@
 <h1>Listing Restaurants</h1>
 
-<table>
+<table id="indexList">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Address</th>
       <th>Phone number</th>
+      <th>Owner name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +19,10 @@
         <td><%= restaurant.description %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.phone_number %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= restaurant.users.first.name %></td>
+        <td class="indexListButton"><%= link_to 'Show', restaurant %></td>
+        <td class="indexListButton"><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <td class="indexListButton"><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

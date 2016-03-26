@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /restaurants
   # GET /restaurants.json
@@ -12,6 +13,9 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1.json
   def show
     show_map
+    @reservations = Reservation.all
+    @reservation = Reservation.new
+    @users = @restaurant.users
   end
 
   # GET /restaurants/new
@@ -21,12 +25,15 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
+    authenticate_rest_owner
   end
 
   # POST /restaurants
   # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
+
+    current_user.restaurants << @restaurant
 
     respond_to do |format|
       if @restaurant.save
@@ -56,10 +63,13 @@ class RestaurantsController < ApplicationController
   # DELETE /restaurants/1
   # DELETE /restaurants/1.json
   def destroy
-    @restaurant.destroy
-    respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
-      format.json { head :no_content }
+    if authenticate_rest_owner
+    else
+      @restaurant.destroy
+      respond_to do |format|
+        format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -76,6 +86,12 @@ class RestaurantsController < ApplicationController
     @map_url_string = "https://maps.googleapis.com/maps/api/staticmap?size=400x400&markers=color:blue%7C" + @allRestAddress + "&key="
   end
 
+  def authenticate_rest_owner
+    if current_user.name != @restaurant.users.first.name
+      redirect_to root_path
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
@@ -86,5 +102,4 @@ class RestaurantsController < ApplicationController
     def restaurant_params
       params.require(:restaurant).permit(:name, :description, :address, :phone_number)
     end
-
 end
