@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   has_many :restaurants_users
   has_many :restaurants, through: :restaurants_users
   validates :email, :uniqueness => true, :email_format => true
+  ROLES = %w[admin owner patron].freeze
 end

@@ -3,6 +3,10 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="field">
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+    (current authentication: <%= current_user.role %>)
+  </div>
 
   <div class="field">
     <%= f.label :name %><br />
