@@ -4,8 +4,14 @@ class ReservationsController < ApplicationController
   def new
   end
 
+  def index
+    @reservations = Reservation.all    
+  end
+
   def create
   @reservation = Reservation.new(reservation_params)
+
+  current_user.reservations << @reservation
 
   respond_to do |format|
       if @reservation.save

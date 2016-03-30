@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :restaurants_users
   has_many :restaurants, through: :restaurants_users
+  has_many :reservations
+  has_many :starrings
+
   validates :email, :uniqueness => true, :email_format => true
   ROLES = %w[admin owner patron].freeze
 end

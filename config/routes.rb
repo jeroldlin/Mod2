@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users, :path => 'u'
-  resources :users
-  resources :restaurants
+  resources :users do
+    resources :reservations
+  end
+  resources :restaurants do
+    resources :starrings
+  end
   resources :reservations
   root "restaurants#index"
+
+  get 'restaurants/:id/starrings' => 'starrings#form', as: :starrings
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

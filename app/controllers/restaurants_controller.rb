@@ -15,6 +15,7 @@ class RestaurantsController < ApplicationController
     show_map
     @reservations = Reservation.all
     @reservation = Reservation.new
+    @starring = Starring.new
     @users = @restaurant.users
   end
 
