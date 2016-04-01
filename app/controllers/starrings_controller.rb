@@ -9,17 +9,17 @@ class StarringsController < ApplicationController
   end
 
   def create
-    @starring = Starring.new(starring_params)
+      @starring = Starring.new(starring_params)
 
-    respond_to do |format|
-      if @starring.save
-        format.js
-        format.json { render :show, status: :created, location: @starring }
-      else
-        format.html { render :new }
-        format.json { render json: @starring.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @starring.save
+          format.js
+          format.json { render :show, status: :created, location: @starring }
+        else
+          format.html { render :new }
+          format.json { render json: @starring.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   def destroy

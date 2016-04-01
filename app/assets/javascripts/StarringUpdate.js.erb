@@ -1,0 +1,11 @@
+function StarringUpdate (){
+	if ($("#starringSwitch").text() == "yes"){
+		UpdateStarring("(<%= asset_path 'YellowStar.png' %>)");
+	}else{
+		UpdateStarring("(<%= asset_path 'WhiteStar.png' %>)");
+	}
+}
+
+function UpdateStarring (StarImage){
+	$("#star-five").css({"background": "url" + StarImage + "transparent", "background-repeat": "no-repeat", "background-position": "right"})
+}

@@ -1,0 +1,10 @@
+<div id="starringBox">
+<b>Favorite:</b>
+   <% @starrings.each do |star| %>
+        <%= button_to '', star, method: :delete, id:"star-five", remote: true %>
+    <% end %>
+</div>
+
+  <script type="text/javascript">
+     StarringUpdate ();
+  </script>
