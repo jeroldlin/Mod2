@@ -4,28 +4,31 @@ class StarringsController < ApplicationController
   def new
   end
 
+  def show
+  end
+
   def index
     @starrings = Starring.all    
   end
 
   def create
-      @starring = Starring.new(starring_params)
+    @starring = Starring.new(starring_params)
 
-      respond_to do |format|
-        if @starring.save
-          format.js
-          format.json { render :show, status: :created, location: @starring }
-        else
-          format.html { render :new }
-          format.json { render json: @starring.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @starring.save
+        format.js
+        format.json { render :show, status: :created, location: @starring }
+      else
+        format.html { render :new }
+        format.json { render json: @starring.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   def destroy
     @starring.destroy
     respond_to do |format|
-      format.html { redirect_to restaurant_path(@starring.restaurant_id), notice: 'Starring was successfully destroyed.' }
+      format.js
       format.json { head :no_content }
     end
   end
@@ -36,6 +39,6 @@ class StarringsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def starring_params
-      params.require(:starring).permit(:creation_time, :user_id, :restaurant_id)
+      params.require(:starring).permit(:user_id, :restaurant_id)
     end
 end

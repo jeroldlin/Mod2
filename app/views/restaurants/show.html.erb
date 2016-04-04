@@ -27,6 +27,11 @@
   <% end %>
 </p>
 
+<span style="display: ">
+  <div id="userId"><%= current_user.id %></div>
+  <div id="restaurantId"><%= @restaurant.id %></div>
+</span>
+
 <p>
   <%=render "starrings/form" %>
 </p>

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   end
   resources :reservations
   resources :starrings
+  resources :remove_starrings
   root "restaurants#index"
 
-  # get 'restaurants/:id/starrings' => 'starrings#form', as: :starrings
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

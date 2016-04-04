@@ -1,0 +1,2 @@
+alert ("unfavorited");
+$("#unFav").html("<%= escape_javascript(render partial: 'items_list', locals: { items: @selected } ) %>")

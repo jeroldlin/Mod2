@@ -37,11 +37,11 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    awesome_print (1.6.1)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    byebug (8.2.2)
     cancan (1.6.10)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -94,6 +94,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -184,7 +186,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
+  awesome_print
   cancan
   coffee-rails (~> 4.1.0)
   devise (~> 3.5, >= 3.5.6)
@@ -192,7 +194,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   pg
-  pry
+  pry-rails
   rails (= 4.2.5.1)
   rspec-rails
   sass-rails (~> 5.0)

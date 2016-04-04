@@ -1,13 +1,11 @@
+ <div class="switchYes">
+
  <%= form_for(@starring, remote: true) do |f| %>
  <%= render "shared/error_messages", :target => @starring %>
 
-  <div id="starringBox">
-  <b>Favorite:</b><%= f.submit "", :id => "star-five" %>
+  <div class="starringBox">
+  <b>Favorite:</b><%= f.submit "", :id => "star-five-white", :onclick => "SwitchFavoritePage();StarringUpdate()" %>
   </div>
-
-  <script type="text/javascript">
-     StarringUpdate ();
-  </script>
  
   <div class="field" style="display: none;">
     <%= f.label :creation_time, :value => "Make Favorite" %><br />
@@ -22,3 +20,4 @@
     <%= f.text_field :restaurant_id, :value => @restaurant.id, :readonly => "readonly" %>
   </div>
  <% end %>
+</div>
