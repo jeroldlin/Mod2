@@ -1,6 +1,5 @@
-<div class="starringBox switchNo">
+<div class="starringBox switchNo" onload="StarringUpdate()">
 <b>Favorite:</b>
-<!--button type="button" id="star-five-yellow" onclick="SwitchFavoritePage();StarringUpdate();DeleteFavorites()"></button-->
    <% @starrings.each do |star| %>
         <%= button_to '', star, method: :delete, remote: :true, id:"star-five-yellow", onclick:"SwitchFavoritePage();StarringUpdate()" %>
     <% end %>

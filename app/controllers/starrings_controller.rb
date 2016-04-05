@@ -7,6 +7,11 @@ class StarringsController < ApplicationController
   def show
   end
 
+  def calc
+    @starrings = Starring.all 
+    render partial: "starrings/form_unfavorite"
+  end
+
   def index
     @starrings = Starring.all    
   end
