@@ -19,4 +19,5 @@
 //= require bootstrap.min
 //= require WebDesign
 //= require TimeCalculator
+//= require StarringUpdate
 //= require_tree

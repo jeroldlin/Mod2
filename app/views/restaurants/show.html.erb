@@ -26,11 +26,15 @@
   <%=   u.name %>
   <% end %>
 </p>
+<% if user_signed_in? %>
+  <p>
+    <%=render "starrings/form" %>
+  </p>
 
-<p>
-  <%=render "reservations/reservations" %>
-</p>
-
+  <p>
+    <%=render "reservations/reservations" %>
+  </p>
+<% end %>
 <hr />
 
 <p>

@@ -1,0 +1,15 @@
+<% if Starring.where(restaurant_id: @restaurant.id).exists?(user_id: current_user.id) %>
+  <span id="starringSwitch" style="display: none;">yes</span>
+<% else %>
+  <span id="starringSwitch" style="display: none;">no</span>
+<% end %>
+
+<div id="unFav">
+<%=render "starrings/form_unfavorite" %>
+</div>
+
+<%=render "starrings/form_favorite" %>
+
+<script type="text/javascript">
+	StarringUpdate();
+</script>

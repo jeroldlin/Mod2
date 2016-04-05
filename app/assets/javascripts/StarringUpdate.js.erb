@@ -1,0 +1,33 @@
+function StarringUpdate (){
+	if ($("#starringSwitch").text() == "yes"){
+		$(".switchNo").css("display", "");
+		$(".switchYes").css("display", "none");
+	}else{
+		$(".switchNo").css("display", "none");
+		$(".switchYes").css("display", "");
+	}
+}
+
+function SwitchFavoritePage (){
+	if ($("#starringSwitch").text() == "yes"){
+		$("#starringSwitch").text("no");
+	}else{
+		$("#starringSwitch").text("yes");
+	}
+}
+
+/*
+function DeleteFavorites (){
+	var userId = $("#userId").text();
+	var restaurantId = $("#restaurantId").text();
+	$.ajax({
+		type:"DELETE",
+		url:"/remove_starrings/" + restaurantId,
+		data:"",
+		success: function(){
+			alert ("unfavorited")
+		}
+
+	});
+}
+*/

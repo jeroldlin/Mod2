@@ -1,5 +1,6 @@
 class Reservation < ActiveRecord::Base
 	belongs_to :restaurant
+	belongs_to :user
 
 	#validates :email, 					:presence => {:message => "Must have email for reservation."}, :email_format => true
 	#validates :requested_date_time, 	:presence => {:message => "Please stay at the 4th dimension."}

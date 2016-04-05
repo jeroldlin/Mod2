@@ -1,4 +1,4 @@
-<h2>Reservations in your restaurant</h2>
+<h2>Current Reservation</h2>
 <table id="indexList">
 	<thead>
 		<tr>
@@ -12,7 +12,7 @@
 
 	<tbody>
 		<% @reservations.each do |reservation| %>
-			<% if current_user.id == reservation.restaurant.users.first.id%>
+			<% if current_user.id == reservation.user_id%>
 				<tr>
 				    <td><%= reservation.email %></td>
 				    <td><%= reservation.requested_date_time %></td>

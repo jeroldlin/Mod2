@@ -1,0 +1,22 @@
+alert ("unfavorited");
+loadDoc();
+// $.ajax({
+//   type: "GET",
+//   url: "starrings/form_unfavorite" ,
+//   success: function(data){
+//     //if ever there is something more to do (there is also an error handler)
+//   }
+// });
+//$("#unFav").html( escape_javascript(render 'starrings/form_unfavorite') %>");
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("unFav").innerHTML = xhttp.responseText;
+      StarringUpdate();
+    }
+  };
+  xhttp.open("GET", "starring/calc.rb", true);
+  xhttp.send();
+}

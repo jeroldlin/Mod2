@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users, :path => 'u'
-  resources :users
-  resources :restaurants
+  resources :users do
+    resources :reservations
+  end
+  resources :restaurants do
+    resources :starrings
+  end
   resources :reservations
+  resources :starrings
+  resources :remove_starrings
   root "restaurants#index"
+
+  get "/restaurants/starring/calc.rb" => "starrings#calc"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
