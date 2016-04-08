@@ -12,7 +12,7 @@
 
 	<tbody>
 		<% @reservations.each do |reservation| %>
-			<% if current_user.id == reservation.user_id%>
+			<% if current_user.id == reservation.user_id %>
 				<tr>
 				    <td><%= reservation.email %></td>
 				    <td><%= reservation.requested_date_time %></td>

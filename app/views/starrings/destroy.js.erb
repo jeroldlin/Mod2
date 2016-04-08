@@ -1,5 +1,4 @@
-alert ("unfavorited");
-loadDoc();
+
 // $.ajax({
 //   type: "GET",
 //   url: "starrings/form_unfavorite" ,
@@ -13,7 +12,7 @@ function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-      document.getElementById("unFav").innerHTML = xhttp.responseText;
+      document.getElementById("unFav").style() = xhttp.responseText;
       StarringUpdate();
     }
   };

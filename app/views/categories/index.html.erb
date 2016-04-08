@@ -1,0 +1,20 @@
+<h1>Listing Restaurants</h1>
+
+<table id="indexList">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |c| %>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= c.description %></td>
+        <td class="indexListButton"><%= link_to 'Check the Restaurants', c %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

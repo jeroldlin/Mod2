@@ -18,11 +18,12 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 		  <ul class="nav navbar-nav navbar-left">
-			<li class="active"><a href="#" id="NavLink">Find restaurant</a></li>
+			<li class="active"><%= link_to "Browse by categories", categories_path, :id => "NavLink" %></li>
+
 		  <% if user_signed_in? %>
-		  	  <li class="active"><%= link_to "Reservations", user_reservations_path(current_user), :id => "NavLink" %></a></li>
+		  	  <li class="active"><%= link_to "Reservations", user_reservations_path(current_user), :id => "NavLink" %></li>
 			  <% if current_user.role == "owner" || current_user.role == "admin"%>
-				<li class="active"><%= link_to "Owner protal", user_path(current_user), :id => "NavLink" %></a></li>
+				<li class="active"><%= link_to "Owner protal", user_path(current_user), :id => "NavLink" %></li>
 			  <% end %>
 		  <% end %>
 		  </ul>

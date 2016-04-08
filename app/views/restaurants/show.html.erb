@@ -21,6 +21,13 @@
 </p>
 
 <p>
+  <strong>Category(s):</strong>
+  <%- @categories.each do |c| %>
+  <%=   c.name %>
+  <% end %>
+</p>
+
+<p>
   <strong>Owner(s):</strong>
   <%- @users.each do |u| %>
   <%=   u.name %>

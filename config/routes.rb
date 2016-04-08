@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :reservations
   resources :starrings
   resources :remove_starrings
+  resources :categories
   root "restaurants#index"
 
   get "/restaurants/starring/calc.rb" => "starrings#calc"
