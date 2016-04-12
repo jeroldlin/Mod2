@@ -12,7 +12,13 @@ Rails.application.routes.draw do
   resources :categories
   root "restaurants#index"
 
-  get "/restaurants/starring/calc.rb" => "starrings#calc"
+  get "/restaurants/starring/star_update" => "starrings#star_update"
+
+  get "/restaurants/starring/favorite" => "starrings#favorite"
+
+  get "/starring/updated_list" => "starrings#updated_list"
+
+  # get "/restaurants/starring/calc.rb" => "starrings#calc"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

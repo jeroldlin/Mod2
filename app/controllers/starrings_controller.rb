@@ -7,13 +7,29 @@ class StarringsController < ApplicationController
   def show
   end
 
-  def calc
-    @starrings = Starring.all 
-    render partial: "starrings/form_unfavorite"
+  def star_update
+    if Starring.where(restaurant_id: params[:starring][:restaurant_id]).exists?(user_id: current_user.id)
+      render plain: "url(" + ActionController::Base.helpers.asset_path('YellowStar.png') + ") transparent no-repeat right"
+    else
+      render plain: "url(" + ActionController::Base.helpers.asset_path('WhiteStar.png') + ") transparent no-repeat right"
+    end
+  end
+
+  def favorite
+    if Starring.where(restaurant_id: params[:starring][:restaurant_id]).exists?(user_id: current_user.id)
+      destroy_any
+    else
+      create
+    end
   end
 
   def index
-    @starrings = Starring.all    
+    @starrings = Starring.all  
+  end
+
+  def updated_list
+    @starrings = Starring.all
+    render :partial => 'starrings/indexp'
   end
 
   def create
@@ -35,6 +51,14 @@ class StarringsController < ApplicationController
     respond_to do |format|
       format.js
       format.json { head :no_content }
+    end
+  end
+
+  def destroy_any
+    Starring.all.each do |star|
+      if star.restaurant_id == params[:starring][:restaurant_id].to_i && star.user_id == current_user.id
+        star.destroy
+      end
     end
   end
 

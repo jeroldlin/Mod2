@@ -1,0 +1,27 @@
+<table id="indexList">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>Phone number</th>
+      <th>Owner name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @starrings.each do |starring| %>
+        <% if current_user.id == starring.user_id %>
+			<tr>
+				<td><%= starring.restaurant.name %></td>
+				<td><%= starring.restaurant.description %></td>
+				<td><%= starring.restaurant.address %></td>
+				<td><%= starring.restaurant.phone_number %></td>
+				<td><%= starring.restaurant.users.first.name %></td>
+				<td class="indexListButton"><%= link_to 'Un-Favorite', starring, method: :delete, remote: true %></td>
+			</tr>
+	    <% end %>
+    <% end %>
+  </tbody>
+</table>

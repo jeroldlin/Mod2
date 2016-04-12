@@ -1,3 +1,28 @@
+function FavoriteUpdate() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      StarringUpdate();
+    }
+  };
+  xhttp.open("GET", "starring/favorite?starring[user_id]=" + $(".userId").data("temp") + "&starring[restaurant_id]=" + $(".restaurantId").data("temp"), true);
+  xhttp.send();
+  StarringUpdate();
+}
+
+function StarringUpdate() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      $("#star-five").css("background", xhttp.responseText);
+    }
+  };
+  xhttp.open("GET", "starring/star_update?starring[user_id]=" + $(".userId").data("temp") + "&starring[restaurant_id]=" + $(".restaurantId").data("temp"), true);
+  xhttp.send();
+}
+
+
+/*
 function StarringUpdate (){
 	if ($("#starringSwitch").text() == "yes"){
 		$(".switchNo").css("display", "");
@@ -16,7 +41,6 @@ function SwitchFavoritePage (){
 	}
 }
 
-/*
 function DeleteFavorites (){
 	var userId = $("#userId").text();
 	var restaurantId = $("#restaurantId").text();
