@@ -17,6 +17,12 @@
     <%= f.label :phone_number %><br>
     <%= f.text_field :phone_number %>
   </div>
+
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.collection_select :category_ids, Category.all, :id, :name, include_blank: true %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

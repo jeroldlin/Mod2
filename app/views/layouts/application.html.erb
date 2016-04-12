@@ -17,15 +17,20 @@
 		  <%= link_to "Jerry's Restaurant Directory", restaurants_path, :id => "NavLink", :class => "navbar-brand", :style => "color:white"%>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
+
 		  <ul class="nav navbar-nav navbar-left">
-			<li class="active"><a href="#" id="NavLink">Find restaurant</a></li>
+			<li class="active"><%= link_to "Browse by categories", categories_path, :id => "NavLink" %></li>
 		  <% if user_signed_in? %>
-		  	  <li class="active"><%= link_to "Reservations", user_reservations_path(current_user), :id => "NavLink" %></a></li>
+		  	  <li class="active"><%= link_to "Reservations", user_reservations_path(current_user), :id => "NavLink" %></li>
+		  	  <% if Starring.exists?(user_id: current_user.id) %>
+		  	  	<li class="active"><%= link_to "Favorited", starrings_path(current_user), :id => "NavLink" %></li>
+		  	  <% end %>
 			  <% if current_user.role == "owner" || current_user.role == "admin"%>
-				<li class="active"><%= link_to "Owner protal", user_path(current_user), :id => "NavLink" %></a></li>
+				<li class="active"><%= link_to "Owner protal", user_path(current_user), :id => "NavLink" %></li>
 			  <% end %>
 		  <% end %>
 		  </ul>
+
 		  <ul class="nav navbar-nav navbar-right">
 		  <% if user_signed_in? %>
 		    <li class="active"><%= link_to current_user.email, edit_user_registration_path, :id => "NavLink" %></li>
@@ -34,6 +39,7 @@
 		  	<li class="active"><%= link_to "Login", new_user_session_path, :id => "NavLink" %></li>
 			<li class="active"><%= link_to "Sign Up", new_user_registration_path, :id => "NavLink" %></li>
 		  <% end %>	
+
 		  </ul>
 		</div>
 	  </div>

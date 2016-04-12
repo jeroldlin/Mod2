@@ -16,8 +16,9 @@ class RestaurantsController < ApplicationController
     @reservations = Reservation.all
     @reservation = Reservation.new
     @starrings = Starring.all
-    @starring = Starring.new
+    # @starring = Starring.new
     @users = @restaurant.users
+    @categories = @restaurant.categories
   end
 
   def owner_portal
@@ -41,6 +42,8 @@ class RestaurantsController < ApplicationController
 
     current_user.restaurants << @restaurant
 
+    Category.find(params[:restaurant][:category_ids]).restaurants << @restaurant
+
     respond_to do |format|
       if @restaurant.save
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
@@ -55,6 +58,9 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1
   # PATCH/PUT /restaurants/1.json
   def update
+
+    Category.find(params[:restaurant][:category_ids]).restaurants << @restaurant
+    
     respond_to do |format|
       if @restaurant.update(restaurant_params)
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
@@ -106,6 +112,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :address, :phone_number)
+      params.require(:restaurant).permit(:name, :description, :address, :phone_number, :category_ids)
     end
 end

@@ -1,0 +1,33 @@
+<h2>Restaurant by Categories</h2>
+
+<table id="indexList">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>Phone number</th>
+      <th>Owner name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <% if restaurant.categories.exists? %>
+        <% if @category.id == restaurant.categories.first.id %>
+          <tr>
+            <td><%= restaurant.name %></td>
+            <td><%= restaurant.description %></td>
+            <td><%= restaurant.address %></td>
+            <td><%= restaurant.phone_number %></td>
+            <td><%= restaurant.users.first.name %></td>
+            <td class="indexListButton"><%= link_to 'Show', restaurant %></td>
+            <td class="indexListButton"><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+            <td class="indexListButton"><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
