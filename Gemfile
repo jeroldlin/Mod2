@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -30,6 +31,8 @@ gem 'devise', '~> 3.5', '>= 3.5.6'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem "cancan"
+
+gem 'rails_12factor'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
