@@ -1,10 +1,17 @@
 <h2>Lets sign up!!</h2>
+Instruction:<br />
+Please enter dummy information, just register with random emails and there is no email authentication<br />
+<br />
+User authority:<br />
+Patron - able to make reservation, favorite restaurant, view the list of favorited restaurant<br />
+Owner - Everything Patron can do + create restaurant and view the list reservations under owners own restaurant.<br />
+<br />
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+    <%= f.select :role, [['Patron', "patron"], ['Owner', "owner"]] %>
   </div>
 
   <div class="field">
