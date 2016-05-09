@@ -1,5 +1,6 @@
 class StarringsController < ApplicationController
   before_action :set_starring, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   def new
   end
@@ -10,10 +11,10 @@ class StarringsController < ApplicationController
   def star_update
     # binding.pry
     if Starring.where(restaurant_id: params[:starring][:restaurant_id]).exists?(user_id: current_user.id)
-      render plain: "url(" + ActionController::Base.helpers.asset_path('YellowStar.png') + ") transparent no-repeat right"
+      render plain: "favorited"
       # binding.pry
     else
-      render plain: "url(" + ActionController::Base.helpers.asset_path('WhiteStar.png') + ") transparent no-repeat right"
+      render plain: "not-favorited"
       # binding.pry
     end
   end
